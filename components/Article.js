@@ -117,30 +117,43 @@ const data = [
 
 function articleMaker(data){
   let article = document.createElement('div')
-  let title = document.createElement('h2')
-  let date = document.createElement('p')
+  let objTitle = document.createElement('h2')
+  let objDate = document.createElement('p')
   let para1 = document.createElement('p')
   let para2 = document.createElement('p')
   let para3 = document.createElement('p')
   let expandButton = document.createElement('span')
 
-  article.appendChild(title)
-  article.appendChild(date)
+  let articles = document.querySelector(".articles")
+  articles.appendChild(article)
+  article.appendChild(objTitle)
+  article.appendChild(objDate)
   article.appendChild(para1)
   article.appendChild(para2)
   article.appendChild(para3)
   article.appendChild(expandButton)
 
   article.classList.add("article")
-  title.classList.add("date")
+  objDate.classList.add("date")
   expandButton.classList.add("expandButton")
 
   expandButton.addEventListener('click', (e) => {
     article.classList.toggle('article-open')
   })
 
-
+  objTitle.textContent = data.title
+  objDate.textContent = data.date
+  para1.textContent = data.firstParagraph
+  para2.textContent = data.secondParagraph
+  para3.textContent = data.thirdParagraph
   
-
-
+  return article
 }
+
+data.forEach((dataObj) => {
+  let articles = document.querySelector(".articles")
+  let newArticle = articleMaker(dataObj)
+  articles.appendChild(newArticle)
+})
+
+console.log(articleMaker({data}))
