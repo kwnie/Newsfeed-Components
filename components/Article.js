@@ -156,4 +156,4 @@ data.forEach((dataObj) => {
   articles.appendChild(newArticle)
 })
 
-console.log(articleMaker({data}))
+console.log(articleMaker(data))
