@@ -86,6 +86,25 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Student Achievments',
+    date: 'Dec 8, 2020',
+    firstParagraph: `Chillwave narwhal readymade humblebrag. Microdosing mlkshk sriracha ethical quinoa, lyft 90's flannel cronut edison bulb copper
+     mug austin. Tumeric cliche celiac, tote bag four dollar toast kogi banh mi man braid. YOLO cred air plant, disrupt sustainable bespoke wolf retro 
+     yuccie food truck mixtape pok pok. Tumeric jean shorts art party mumblecore bicycle rights narwhal crucifix. Cronut cloud bread vinyl truffaut
+     shaman schlitz, yr hammock. Copper mug ennui pug cred. `,
+
+    secondParagraph: `Art party disrupt readymade fingerstache. Roof party literally unicorn, live-edge air plant vexillologist man braid small batch
+    schlitz gluten-free. Mixtape four loko readymade vice, pickled tofu chillwave salvia food truck fixie tilde man bun. Godard health goth kale chips, 
+    gentrify tote bag knausgaard irony.`,
+
+    thirdParagraph: `Williamsburg meh swag sustainable kale chips glossier edison bulb knausgaard asymmetrical. Knausgaard butcher glossier, bespoke 
+    leggings food truck pitchfork kickstarter PBR&B thundercats truffaut vice cred. Glossier selvage 90's street art af wolf pinterest banjo tacos food 
+    truck flexitarian literally typewriter artisan. Street art bitters succulents, 3 wolf moon cliche semiotics typewriter asymmetrical VHS art party sartorial 
+    chillwave hammock. Godard try-hard mixtape pop-up ugh squid. Microdosing cred mumblecore deep v twee. Affogato biodiesel bitters tousled farm-to-table whatever.
+
+    `
   }
 ];
 
@@ -114,3 +133,45 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(data){
+  let article = document.createElement('div')
+  let objTitle = document.createElement('h2')
+  let objDate = document.createElement('p')
+  let para1 = document.createElement('p')
+  let para2 = document.createElement('p')
+  let para3 = document.createElement('p')
+  let expandButton = document.createElement('span')
+
+  let articles = document.querySelector(".articles")
+  articles.appendChild(article)
+  article.appendChild(objTitle)
+  article.appendChild(objDate)
+  article.appendChild(para1)
+  article.appendChild(para2)
+  article.appendChild(para3)
+  article.appendChild(expandButton)
+
+  article.classList.add("article")
+  objDate.classList.add("date")
+  expandButton.classList.add("expandButton")
+
+  expandButton.addEventListener('click', (e) => {
+    article.classList.toggle('article-open')
+  })
+
+  objTitle.textContent = data.title
+  objDate.textContent = data.date
+  para1.textContent = data.firstParagraph
+  para2.textContent = data.secondParagraph
+  para3.textContent = data.thirdParagraph
+  expandButton.textContent = "+"
+  
+  return article
+}
+
+data.forEach((dataObj) => {
+  let articles = document.querySelector(".articles")
+  let newArticle = articleMaker(dataObj)
+  articles.appendChild(newArticle)
+})
