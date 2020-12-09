@@ -47,10 +47,16 @@ function menuMaker(menuItems){
     list.appendChild(listItem)
   })
 
+  let menuButton = document.querySelector('menu-button')
+  menuButton.addEventListener("click", (e) => {
+    menu.classList.toggle("menu--open")
+  })
+
   return menu
 }
 
 let header = document.querySelector(".header")
 let menu = menuMaker(menuItems)
-console.log(menu)
 header.appendChild(menu)
+
+//gsap.to(".menu", {duration: 1, x:100})
