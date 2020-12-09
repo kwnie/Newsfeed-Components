@@ -47,7 +47,7 @@ function menuMaker(menuItems){
     list.appendChild(listItem)
   })
 
-  let menuButton = document.querySelector('menu-button')
+  let menuButton = document.querySelector('.menu-button')
   menuButton.addEventListener("click", (e) => {
     menu.classList.toggle("menu--open")
   })

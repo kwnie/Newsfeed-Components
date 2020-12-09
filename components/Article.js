@@ -165,6 +165,7 @@ function articleMaker(data){
   para1.textContent = data.firstParagraph
   para2.textContent = data.secondParagraph
   para3.textContent = data.thirdParagraph
+  expandButton.textContent = "+"
   
   return article
 }
